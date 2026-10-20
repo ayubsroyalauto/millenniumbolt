@@ -62,9 +62,12 @@
 
 /* Play authored entrance effects only when in view. Never persist hidden state. */
 (() => {
+  if (window.__mbEntranceAnimationsInitialized) return;
+  window.__mbEntranceAnimationsInitialized = true;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   if (!('IntersectionObserver' in window) || !Element.prototype.animate) return;
   const running = new Set();
+  const started = new WeakSet();
   const frames = {
     fadeIn: [{ opacity: 0 }, { opacity: 1 }],
     fadeInUp: [{ opacity: 0, transform: 'translate3d(0,100%,0)' }, { opacity: 1, transform: 'none' }],
@@ -72,7 +75,8 @@
     fadeInRight: [{ opacity: 0, transform: 'translate3d(100%,0,0)' }, { opacity: 1, transform: 'none' }]
   };
   const observer = new IntersectionObserver(entries => entries.forEach(({ target, isIntersecting }) => {
-    if (!isIntersecting) return;
+    if (!isIntersecting || started.has(target)) return;
+    started.add(target);
     observer.unobserve(target);
     if (reduced.matches) return;
     const settings = JSON.parse(target.dataset.settings);
@@ -82,6 +86,7 @@
     const duration = target.classList.contains('animated-slow') ? 2000 : target.classList.contains('animated-fast') ? 750 : 1250;
     const animation = target.animate(frames[name], { duration, delay: Number(settings._animation_delay || settings.animation_delay) || 0, easing: 'ease', fill: 'none' });
     target.dataset.mbAnimation = name;
+    target.dataset.mbAnimationStartCount = String((Number(target.dataset.mbAnimationStartCount) || 0) + 1);
     running.add(animation);
     animation.finished.then(() => { running.delete(animation); target.dataset.mbAnimationFinished = 'true'; }).catch(() => running.delete(animation));
   }), { threshold: 0.1 });

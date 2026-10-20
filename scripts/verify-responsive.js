@@ -81,9 +81,11 @@ const server = http.createServer((req, res) => {
           }).slice(0, 15).map(el => ({ tag: el.tagName, class: el.className, width: el.getBoundingClientRect().width, right: el.getBoundingClientRect().right })),
           hidden: [...document.querySelectorAll('.elementor-invisible')].filter(el => el.getClientRects().length && (getComputedStyle(el).visibility === 'hidden' || getComputedStyle(el).opacity === '0')).length,
           broken: [...document.images].filter(img => img.getClientRects().length && !img.naturalWidth).map(img => img.src),
-          animated: document.querySelectorAll('[data-mb-animation-finished]').length
+          animated: document.querySelectorAll('[data-mb-animation-finished]').length,
+          animationRepeats: [...document.querySelectorAll('[data-mb-animation-start-count]')].filter(el => el.dataset.mbAnimationStartCount !== '1').length
         }));
         assert.equal(audit.hidden, 0); assert.deepEqual(audit.broken, []);
+        assert.equal(audit.animationRepeats, 0, `${file} ${width}: entrance animations must start once`);
         assert.equal(audit.overflow, false, `${file} ${width} overflow: ${JSON.stringify(audit.overflowDetails)}`);
         assert.deepEqual(errors, [], `${file} runtime errors`);
         assert.deepEqual(warnings, [], `${file} console warnings`);

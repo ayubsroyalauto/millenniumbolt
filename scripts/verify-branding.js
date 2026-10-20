@@ -38,6 +38,8 @@ const server = http.createServer((req, res) => {
             const x = lum(a), y = lum(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05);
           };
           const logos = [...document.querySelectorAll('img[src$="/millennium-bolts-logo.png"]')].filter(visible).map(el => ({ width: rect(el).width, height: rect(el).height, natural: el.naturalWidth / el.naturalHeight, x: rect(el).x, right: rect(el).right, alt: el.alt }));
+          const headerHeight = rect(document.querySelector('.elementor-517')).height;
+          const desktopNavHeight = parseFloat(getComputedStyle(document.querySelector('.elementor-517 .elementor-element-7dd6aab .elementskit-menu-container')).height);
           const headerLogo = document.querySelector('.elementor-517 img[src$="/millennium-bolts-logo.png"]');
           const actualLogo = [...document.querySelectorAll('.elementor-517 img')].find(visible);
           const overlaps = [...document.querySelectorAll('.elementor-517 .mb-menu, .elementor-517 .elementor-button')].filter(visible).some(el => {
@@ -59,14 +61,16 @@ const server = http.createServer((req, res) => {
           const oldColors = [...document.querySelectorAll('.elementor *')].filter(visible).filter(el => {
             const s = getComputedStyle(el); return [s.color, s.backgroundColor, s.borderTopColor, s.fill].some(isYellow);
           }).map(el => el.className);
-          return { logos, overlaps, footer: bg, footerContrast, buttons, oldColors,
+          return { logos, headerHeight, desktopNavHeight, overlaps, footer: bg, footerContrast, buttons, oldColors,
             h1: [...document.querySelectorAll('h1')].filter(el => visible(el) && !el.classList.contains('screen-reader-text')).map(el => getComputedStyle(el).color),
             overflow: document.documentElement.scrollWidth > innerWidth + 1 };
         });
         const label = `${file} ${width}`;
         assert.equal(audit.logos.length, 2, label);
-        assert(Math.abs(audit.logos[0].width - 150) < 1, `${label}: header logo ${JSON.stringify(audit.logos)}`);
+        assert(Math.abs(audit.logos[0].width - 130) < 1, `${label}: header logo ${JSON.stringify(audit.logos)}`);
         assert(Math.abs(audit.logos[1].width - 220) < 1, `${label}: footer logo`);
+        assert(audit.desktopNavHeight <= 64, `${label}: desktop nav height ${audit.desktopNavHeight}`);
+        if (width > 1024) assert(audit.headerHeight <= 170, `${label}: header height ${audit.headerHeight}`);
         audit.logos.forEach(l => { assert(Math.abs(l.width / l.height - l.natural) < .01); assert(l.x >= 0 && l.right <= width); assert(l.alt); });
         assert(!audit.overlaps, `${label}: header overlap`);
         assert(!audit.overflow, `${label}: overflow`);
