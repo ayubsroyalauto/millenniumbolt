@@ -1,0 +1,32 @@
+/* Preserve the complete authored banner at its natural aspect ratio. */
+.elementor-image-carousel-wrapper.swiper { overflow-x: auto; max-width: 100%; }
+.elementor-image-carousel-wrapper.swiper-initialized { overflow: hidden; }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .elementor-widget-icon-list .elementor-inline-items { margin-inline: 0 !important; }
+}
+@media (max-width: 767px) {
+  .elementor-element-mbannerhtml1 picture { display: block; }
+  .elementor-element-mbannerhtml1 img { width: 100% !important; height: auto !important; max-height: none !important; object-fit: contain !important; }
+}
+.mb-menu .elementskit-submenu-panel { display: none !important; }
+.mb-menu .mb-submenu-open > .elementskit-submenu-panel { display: block !important; opacity: 1 !important; visibility: visible !important; transform: none !important; }
+@media (min-width: 1025px) {
+  .mb-menu .menu-item-has-children:hover > .elementskit-submenu-panel,
+  .mb-menu .menu-item-has-children:focus-within > .elementskit-submenu-panel { display: block !important; opacity: 1 !important; visibility: visible !important; }
+}
+@media (max-width: 1024px) {
+  .mb-menu .elementskit-menu-container { display: none !important; }
+  .mb-menu.mb-menu-open .elementskit-menu-container {
+    display: block !important; position: fixed !important; inset: 0 auto 0 0 !important;
+    width: min(360px, 100vw) !important; max-width: 100vw !important; height: 100dvh !important;
+    padding: 64px 18px 24px !important; overflow-y: auto !important; overflow-x: hidden !important;
+    transform: none !important; visibility: visible !important; opacity: 1 !important; z-index: 10001 !important;
+  }
+  .mb-menu.mb-menu-open .elementskit-menu-overlay { display: block !important; position: fixed !important; inset: 0 !important; width: 100vw !important; height: 100dvh !important; opacity: 1 !important; visibility: visible !important; transform: none !important; z-index: 10000 !important; background: #0008; }
+  .mb-menu .elementskit-navbar-nav { display: block !important; }
+  .mb-menu .elementskit-submenu-panel { position: static !important; width: 100% !important; box-shadow: none !important; }
+  .mb-menu a { white-space: normal !important; }
+  .mb-menu .elementskit-nav-identity-panel { position: absolute !important; inset: 8px 12px auto auto !important; }
+  .mb-menu .elementskit-menu-close { display: block !important; }
+  body.mb-menu-active { overflow: hidden; }
+}
