@@ -1,0 +1,27 @@
+/* Exported animation widgets must remain readable without Elementor's runtime. */
+.elementor .elementor-invisible { visibility: visible !important; }
+.mb-static-slideshow { isolation: isolate; }
+.mb-static-slideshow > .mb-slides {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: -2;
+  pointer-events: none;
+}
+.mb-static-slideshow > .elementor-background-overlay { z-index: -1; pointer-events: none; }
+.mb-slides > .mb-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--mb-fade) ease;
+}
+.mb-slides > .mb-slide.is-active { opacity: 1; }
+.mb-slide > .elementor-background-slideshow__slide__image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mb-slides > .mb-slide { transition: none; }
+}
