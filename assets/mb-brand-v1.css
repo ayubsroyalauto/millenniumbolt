@@ -1,0 +1,105 @@
+/* Brand palette derived from supplied Millennium Bolts banner, logo, and section artwork. */
+:root {
+  --mb-navy: #01244C;
+  --mb-deep: #001020;
+  --mb-cyan: #028CFB;
+  --mb-blue: #003F7F;
+  --mb-gold: #F2B72F;
+  --mb-cream: #F9F6EF;
+  --mb-ice: #F0F6FA;
+  --mb-silver: #B8C8D8;
+  --mb-text: #1D2327;
+  --mb-white: #FFFFFF;
+}
+body.elementor-kit-7 {
+  --e-global-color-primary: var(--mb-blue);
+  --e-global-color-secondary: var(--mb-navy);
+  --e-global-color-text: var(--mb-text);
+  --e-global-color-accent: var(--mb-cyan);
+  --e-global-color-12134c5: var(--mb-text);
+  --e-global-color-194c9db: var(--mb-ice);
+  --e-global-color-235bf06: var(--mb-silver);
+  --e-global-color-6a935a8: var(--mb-silver);
+  --e-global-color-29a2e6e: #01244CD4;
+  --e-global-color-ae543cc: var(--mb-cyan);
+  --e-global-color-52bf6ec: #01244CD4;
+  color: var(--mb-text);
+  background-color: var(--mb-cream);
+}
+body a { color: var(--mb-blue); }
+body a:hover { color: var(--mb-navy); }
+body :is(a, button, input, textarea, select):focus-visible {
+  outline: 3px solid var(--mb-blue) !important;
+  outline-offset: 4px;
+  box-shadow: 0 0 0 2px var(--mb-white) !important;
+}
+body .elementor :is(.elementor-button, button[type="submit"]) {
+  background-color: var(--mb-cyan) !important;
+  color: var(--mb-deep) !important;
+  border-color: var(--mb-cyan) !important;
+}
+/* Gold accent: bright gold only where it sits on a dark navy panel. */
+body .elementor-473 .elementor-element-7648ec0d .elementor-heading-title { color: var(--mb-gold) !important; }
+body .elementor :is(.elementor-button, button[type="submit"]):is(:hover, :focus-visible) {
+  background-color: var(--mb-blue) !important;
+  border-color: var(--mb-blue) !important;
+  color: var(--mb-white) !important;
+}
+body .elementor h1.elementor-heading-title { color: var(--mb-white) !important; }
+body .elementor-11 .elementor-element-37a41c1f h1.elementor-heading-title { color: var(--mb-white) !important; }
+body .elementor-background-overlay { background-color: var(--mb-navy); }
+body .elementor-517 .elementor-element-57eabbf { background: var(--mb-deep); }
+body .elementor-517 .elementor-element-7caf8af { background: var(--mb-ice); }
+body .elementor-517 .elementor-element-ea20da4 { --width: 220px !important; }
+body .elementor-517 .elementor-element-40bbaff { --width: auto !important; flex: 1; min-width: 0; }
+body .elementor-517 .elementor-element-a89b0b2 img {
+  width: 150px !important; max-width: 100%; height: auto; object-fit: contain;
+}
+body .elementor-517 .elementor-element-fd9adf8 { --width: 200px !important; }
+body .elementor-517 .elementor-element-062f1c8 img {
+  width: 150px !important; max-width: 100%; height: auto; object-fit: contain;
+}
+body .elementor-473 .elementor-image-box-wrapper .elementor-image-box-img {
+  width: 220px !important; max-width: 100%;
+}
+body img[src$="/millennium-bolts-logo.png"] { object-fit: contain; height: auto; }
+body .elementor-517 .mb-menu .elementskit-navbar-nav > li > a { color: var(--mb-white) !important; }
+body .elementor-517 .mb-menu .elementskit-navbar-nav > li > a:is(:hover, :focus-visible),
+body .elementor-517 .mb-menu .elementskit-navbar-nav > li.current-menu-item > a {
+  color: var(--mb-cyan) !important; background: var(--mb-deep) !important;
+}
+body .elementor-517 .mb-menu :is(.elementskit-submenu-indicator, .ekit-submenu-indicator-icon) { color: currentColor !important; fill: currentColor !important; }
+body .elementor-517 .mb-menu .elementskit-submenu-panel { background: var(--mb-ice); border-color: var(--mb-silver); }
+body .elementor-517 .mb-menu .elementskit-submenu-panel > li > a { color: var(--mb-navy) !important; }
+body .elementor-517 .mb-menu .elementskit-submenu-panel > li > a:is(:hover, :focus-visible) {
+  color: var(--mb-white) !important; background: var(--mb-blue) !important;
+}
+body .elementor-517 .mb-menu :is(.elementskit-menu-hamburger, .elementskit-menu-close) {
+  color: var(--mb-navy); background: var(--mb-white); border-color: var(--mb-blue);
+}
+body .elementor-517 .mb-menu .elementskit-menu-hamburger .elementskit-menu-hamburger-icon { background: var(--mb-navy) !important; }
+body .elementor-473 .elementor-element-65092d56 { background: var(--mb-deep) !important; border-color: var(--mb-cyan); }
+body .elementor-473 .elementor-element-7648ec0d { background: var(--mb-deep) !important; }
+body .elementor-473 :is(.elementor-image-box-title, .elementor-image-box-description, .elementor-icon-list-text, a) { color: var(--mb-white) !important; }
+body .elementor-473 :is(.elementor-heading-title, .elementor-icon-list-icon i) { color: var(--mb-cyan) !important; }
+body .elementor-473 .elementor-icon-list-icon svg { fill: var(--mb-cyan) !important; }
+body .elementor-473 a:is(:hover, :focus-visible) .elementor-icon-list-text { color: var(--mb-cyan) !important; text-decoration: underline; }
+body .elementor input:not([type="submit"]), body .elementor textarea, body .elementor select { border-color: var(--mb-silver); color: var(--mb-text); }
+body .elementor-widget-divider { --divider-color: var(--mb-blue); }
+body .elementor-377 .elementor-element-510669d7 .elementor-divider-separator { border-color: var(--mb-blue) !important; }
+@media (max-width: 1024px) {
+  body .elementor-517 .mb-menu .elementskit-menu-container { background: var(--mb-ice); }
+  body .elementor-517 .mb-menu .elementskit-navbar-nav > li > a { color: var(--mb-navy) !important; }
+  body .elementor-517 .mb-menu .elementskit-navbar-nav > li > a:is(:hover, :focus-visible),
+  body .elementor-517 .mb-menu .elementskit-navbar-nav > li.current-menu-item > a { color: var(--mb-white) !important; background: var(--mb-blue) !important; }
+}
+@media (max-width: 767px) {
+  body .elementor-517 .elementor-element-a89b0b2 img,
+  body .elementor-517 .elementor-element-062f1c8 img { width: 150px !important; }
+  body .elementor-517 .elementor-element-7b9ce9f { --width: 140px !important; }
+}
+@media (max-width: 360px) {
+  body .elementor-517 .elementor-element-a89b0b2 img,
+  body .elementor-517 .elementor-element-062f1c8 img { width: 150px !important; }
+  body .elementor-517 .elementor-element-7b9ce9f { --width: 120px !important; }
+}

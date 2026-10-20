@@ -21,3 +21,5 @@ node scripts/verify-responsive.js
 ```
 
 Tests cover all 12 pages at 320, 390, 768, 1024 and 1440 pixels, real menu/submenu clicks, navigation, Escape, close, resize, headings, banner source/aspect ratio, completed animations, reduced motion, JavaScript-disabled visibility, broken images, overflow and console errors/warnings. Set `TEST_BASE` for live verification and `SHOTS` for screenshot/results output.
+
+Brand theme generation: `node scripts/build-brand-theme.js`. Run `node scripts/verify-branding.js` to check logo sizing/placement, palette, footer/button contrast, headings, focus visibility, overflow, and browser errors on all pages at 320, 390, 768, 1024 and 1440 pixels. The verifier requires Playwright and Chrome.
