@@ -48,8 +48,16 @@ const server = http.createServer((req, res) => {
           const bg = getComputedStyle(footer).backgroundColor;
           const footerContrast = [...footer.querySelectorAll('.elementor-heading-title, .elementor-icon-list-text, .elementor-image-box-description')].filter(visible).map(el => contrast(getComputedStyle(el).color, bg));
           const buttons = [...document.querySelectorAll('.elementor-button')].filter(visible).map(el => { const s = getComputedStyle(el); return contrast(s.color, s.backgroundColor); });
+          const isYellow = value => {
+            const rgb = value.match(/[\d.]+/g)?.slice(0, 3).map(Number);
+            if (!rgb || rgb.length < 3) return false;
+            const [r, g, b] = rgb.map(v => v / 255), max = Math.max(r, g, b), min = Math.min(r, g, b), d = max - min;
+            if (!d) return false;
+            const hue = ((max === r ? (g - b) / d : max === g ? 2 + (b - r) / d : 4 + (r - g) / d) * 60 + 360) % 360;
+            return hue >= 35 && hue <= 70 && d / max > .2;
+          };
           const oldColors = [...document.querySelectorAll('.elementor *')].filter(visible).filter(el => {
-            const s = getComputedStyle(el); return [s.color, s.backgroundColor, s.borderTopColor, s.fill].some(v => ['rgb(255, 171, 0)', 'rgb(237, 232, 226)'].includes(v));
+            const s = getComputedStyle(el); return [s.color, s.backgroundColor, s.borderTopColor, s.fill].some(isYellow);
           }).map(el => el.className);
           return { logos, overlaps, footer: bg, footerContrast, buttons, oldColors,
             h1: [...document.querySelectorAll('h1')].filter(el => visible(el) && !el.classList.contains('screen-reader-text')).map(el => getComputedStyle(el).color),

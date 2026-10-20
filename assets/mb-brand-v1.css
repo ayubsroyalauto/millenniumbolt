@@ -2,10 +2,9 @@
 :root {
   --mb-navy: #01244C;
   --mb-deep: #001020;
-  --mb-cyan: #028CFB;
-  --mb-blue: #003F7F;
-  --mb-gold: #F2B72F;
-  --mb-cream: #F9F6EF;
+  --mb-cyan: #36C2FF;
+  --mb-blue: #0069B4;
+  --mb-paper: #F3F9FF;
   --mb-ice: #F0F6FA;
   --mb-silver: #B8C8D8;
   --mb-text: #1D2327;
@@ -24,7 +23,7 @@ body.elementor-kit-7 {
   --e-global-color-ae543cc: var(--mb-cyan);
   --e-global-color-52bf6ec: #01244CD4;
   color: var(--mb-text);
-  background-color: var(--mb-cream);
+  background-color: var(--mb-paper);
 }
 body a { color: var(--mb-blue); }
 body a:hover { color: var(--mb-navy); }
@@ -38,8 +37,8 @@ body .elementor :is(.elementor-button, button[type="submit"]) {
   color: var(--mb-deep) !important;
   border-color: var(--mb-cyan) !important;
 }
-/* Gold accent: bright gold only where it sits on a dark navy panel. */
-body .elementor-473 .elementor-element-7648ec0d .elementor-heading-title { color: var(--mb-gold) !important; }
+/* High-visibility cyan accent on the dark footer panel. */
+body .elementor-473 .elementor-element-7648ec0d .elementor-heading-title { color: var(--mb-cyan) !important; }
 body .elementor :is(.elementor-button, button[type="submit"]):is(:hover, :focus-visible) {
   background-color: var(--mb-blue) !important;
   border-color: var(--mb-blue) !important;

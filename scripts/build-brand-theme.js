@@ -6,7 +6,8 @@ const root = path.resolve(__dirname, '..');
 const colors = {
   '#000000': 'var(--mb-navy)', '#000000D6': '#002040D6',
   '#101010': 'var(--mb-navy)', '#707070': 'var(--mb-blue)',
-  '#F2B72F': 'var(--mb-cyan)', '#ffab00': 'var(--mb-cyan)'
+  '#F2B72F': 'var(--mb-cyan)', '#F2B72FD9': '#36C2FFD9', '#ffab00': 'var(--mb-cyan)',
+  '#F9F6EF': 'var(--mb-paper)', '#EDE8E2': 'var(--mb-silver)'
 };
 function extract(css) {
   let result = '', start = 0;
