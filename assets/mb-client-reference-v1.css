@@ -18,16 +18,12 @@ body .elementor-11 .elementor-element-cf3c573 h2 { color: #092b50 !important; te
 body .elementor-11 .elementor-element-6474065 { padding: 10px 24px 70px !important; gap: 18px !important; }
 body .elementor-11 .elementor-element-6474065 img { display: block; width: 100%; aspect-ratio: 1 / .9; object-fit: cover; background: #111; }
 body .elementor-11 .elementor-element-6474065 a { display: block; overflow: hidden; background: #5f5f5f; }
-body .elementor-11 .elementor-element-6474065 .elementor-widget-image { position: relative; }
-body .elementor-11 .elementor-element-6474065 .elementor-widget-image a:after { display:block; padding:7px 4px; color:#fff; background:#626262; text-align:center; font-size:18px; line-height:1.2; }
-body .elementor-11 .elementor-element-6474065 .elementor-widget-image:nth-child(1) a:after { content:"Washers"; }
-body .elementor-11 .elementor-element-6474065 .elementor-widget-image:nth-child(2) a:after { content:"Stud Bolts"; }
-body .elementor-11 .elementor-element-6474065 .elementor-widget-image:nth-child(3) a:after { content:"Anchor Bolts"; }
-body .elementor-11 .elementor-element-6474065 .elementor-widget-image:nth-child(4) a:after { content:"U Bolts"; }
-body .elementor-11 .elementor-element-6474065 .elementor-widget-image:nth-child(5) a:after { content:"Eye Bolt"; }
+body .elementor-11 .elementor-element-6474065 .elementor-widget-image a:after { content:none !important; }
 body .elementor-473 .elementor-element-65092d56 { background: var(--mb-ref-navy) !important; padding: 80px 4% 22px !important; }
-body .elementor-473 .elementor-element-65092d56 .elementor-container { max-width: 1320px; align-items: flex-start; gap: 42px; }
-body .elementor-473 .elementor-element-65092d56 .elementor-column { min-width: 0; }
+body .elementor-473 .elementor-element-65092d56 .elementor-container { width:100%; max-width: 1320px; align-items: flex-start; gap: 30px; }
+body .elementor-473 .elementor-element-65092d56 .elementor-column { min-width: 0; width:auto !important; max-width:none !important; flex:1 1 0 !important; }
+body .elementor-473 .elementor-element-65092d56 .elementor-widget-wrap { min-width:0; }
+body .elementor-473 .elementor-element-65092d56 .elementor-icon-list-text { overflow-wrap:anywhere; }
 body .elementor-473 .elementor-element-65092d56 .elementor-image-box-img img { width: min(100%, 340px) !important; height: auto; }
 body .elementor-473 .elementor-element-65092d56 .elementor-image-box-title,
 body .elementor-473 .elementor-element-65092d56 .elementor-heading-title { color: var(--mb-ref-cyan) !important; }
@@ -36,9 +32,15 @@ body .elementor-473 .elementor-element-65092d56 .elementor-image-box-description
 body .elementor-473 .elementor-element-65092d56 .elementor-icon-list-text { color: #fff !important; }
 body .elementor-473 .elementor-element-65092d56 .elementor-icon-list-icon i,
 body .elementor-473 .elementor-element-65092d56 .elementor-icon-list-icon svg { color: var(--mb-ref-cyan) !important; fill: var(--mb-ref-cyan) !important; }
+body.page-id-126 .elementor-126 > section:first-child { display:none !important; }
+body .elementor-473 .elementor-element-5bd61b3c .elementor-icon-list-item:nth-child(2) { display:none !important; }
+body .elementor-473 .elementor-element-5bd61b3c .elementor-icon-list-item:first-child .elementor-icon-list-text:after { content:" Millennium Bolts Industries LLP"; color:#fff; }
+.mb-quote-actions button { min-width:0; white-space:nowrap; }
+.mb-quote-actions button[type="submit"] { padding-inline:20px; }
 @media (max-width: 767px) {
  body .elementor-473 .elementor-element-65092d56 { padding: 42px 22px 24px !important; }
  body .elementor-473 .elementor-element-65092d56 .elementor-container { gap: 24px; }
+ body .elementor-473 .elementor-element-65092d56 .elementor-column { flex:1 1 100% !important; width:100% !important; }
  body .elementor-473 .elementor-element-65092d56 .elementor-heading-title { font-size: 26px; }
  body .elementor-11 .elementor-element-6474065 { grid-template-columns: repeat(2,minmax(0,1fr)) !important; padding-inline: 16px !important; }
 }

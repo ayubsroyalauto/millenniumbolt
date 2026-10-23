@@ -817,7 +817,7 @@ wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
       </div>
       <div class="mb-quote-actions">
         <button type="button" class="secondary" id="mb-quote-cancel">Cancel</button>
-        <button type="submit" class="primary">Submit Quote Request</button>
+        <button type="submit" class="primary">Submit</button>
       </div>
     </form>
   </div>
@@ -848,7 +848,7 @@ wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
       form.innerHTML='<p role="status" style="color:#087443;font-weight:700">Thank you. Your quote request has been sent successfully.</p>';
     } catch(error) {
       button.disabled=false;
-      button.textContent='Submit Quote Request';
+      button.textContent='Submit';
       let status=form.querySelector('[data-quote-status]');
       if(!status){status=document.createElement('p');status.dataset.quoteStatus='';status.setAttribute('role','alert');form.append(status);}
       status.textContent='We could not send your request right now. Please try again or email sales@millenniumbolts.com.';
