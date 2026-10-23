@@ -638,14 +638,25 @@ wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
   });
   document.getElementById('mb-quote-cancel').addEventListener('click',close);
   modal.addEventListener('click',e=>{if(e.target===modal)close();});
-  form.addEventListener('submit',e=>{
+  form.addEventListener('submit', async e=>{
     e.preventDefault();
-    const data=new FormData(form);
-    const body=Object.fromEntries(data.entries());
-    const subject=encodeURIComponent('Quote Request - '+(body.product||'Millennium Bolts'));
-    const msg=encodeURIComponent(Object.entries(body).map(([k,v])=>k.replace(/_/g,' ')+': '+v).join('\n'));
-    window.location.href='mailto:sales@millenniumbolts.com?subject='+subject+'&body='+msg;
-    close();
+    const button=form.querySelector('button[type="submit"]');
+    button.disabled=true;
+    button.textContent='Sending?';
+    const payload=new FormData(form);
+    payload.append('_subject','Quote Request - '+(payload.get('product')||'Millennium Bolts'));
+    try {
+      const response=await fetch('https://formsubmit.co/ajax/sales@millenniumbolts.com',{method:'POST',body:payload,headers:{Accept:'application/json'}});
+      const result=await response.json();
+      if(!response.ok || result.success!==true) throw new Error('send failed');
+      form.innerHTML='<p role="status" style="color:#087443;font-weight:700">Thank you. Your quote request has been sent successfully.</p>';
+    } catch(error) {
+      button.disabled=false;
+      button.textContent='Submit Quote Request';
+      let status=form.querySelector('[data-quote-status]');
+      if(!status){status=document.createElement('p');status.dataset.quoteStatus='';status.setAttribute('role','alert');form.append(status);}
+      status.textContent='We could not send your request right now. Please try again or email sales@millenniumbolts.com.';
+    }
   });
 })();
 </script>
