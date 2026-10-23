@@ -84,12 +84,12 @@
     const name = settings[`_animation${suffix}`] || settings._animation || settings.animation;
     if (!frames[name]) return;
     const duration = target.classList.contains('animated-slow') ? 2000 : target.classList.contains('animated-fast') ? 750 : 1250;
-    const animation = target.animate(frames[name], { duration, delay: Number(settings._animation_delay || settings.animation_delay) || 0, easing: 'ease', fill: 'none' });
+    const animation = target.animate(frames[name], { duration, delay: Number(settings._animation_delay || settings.animation_delay) || 0, easing: 'ease', fill: 'forwards' });
     target.dataset.mbAnimation = name;
     target.dataset.mbAnimationStartCount = String((Number(target.dataset.mbAnimationStartCount) || 0) + 1);
     running.add(animation);
     animation.finished.then(() => { running.delete(animation); target.dataset.mbAnimationFinished = 'true'; }).catch(() => running.delete(animation));
-  }), { threshold: 0.1 });
+  }), { threshold: 0.15 });
   document.querySelectorAll('[data-settings]').forEach(el => {
     try { const s = JSON.parse(el.dataset.settings); if (s._animation || s.animation) observer.observe(el); } catch { /* Invalid exported settings remain visible. */ }
   });
