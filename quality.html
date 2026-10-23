@@ -639,40 +639,22 @@ wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
   });
   document.getElementById('mb-quote-cancel').addEventListener('click',close);
   modal.addEventListener('click',e=>{if(e.target===modal)close();});
-  form.addEventListener('submit', async e=>{
+  form.addEventListener('submit',e=>{
     e.preventDefault();
-    const button=form.querySelector('button[type="submit"]');
-    button.disabled=true;
-    let status=form.querySelector('[data-quote-status]');
-    if(!status){status=document.createElement('p');status.dataset.quoteStatus='';status.setAttribute('role','status');form.append(status);}
-    status.textContent='Sending your quote request?';
-    const payload=new FormData(form);
-    payload.append('_subject','Quote Request - '+(payload.get('product')||'Millennium Bolts'));
-    payload.append('_cc','famebros.studio@gmail.com');
-    payload.append('_captcha','false');
-    try {
-      const controller=new AbortController();
-      const timeout=setTimeout(()=>controller.abort(),60000);
-      let response,result;
-      try {
-        response=await fetch('https://formsubmit.co/ajax/sales@millenniumbolts.com',{method:'POST',body:payload,headers:{Accept:'application/json'},signal:controller.signal});
-        result=await response.json();
-      } finally { clearTimeout(timeout); }
-      if(!response.ok || ![true,'true','success'].includes(result.success)) throw new Error(result.message||'send failed');
-      close();
-      form.reset();
-      const notice=document.createElement('div');
-      notice.setAttribute('role','status');
-      notice.textContent='Mail sent successfully';
-      Object.assign(notice.style,{position:'fixed',left:'50%',bottom:'24px',transform:'translateX(-50%)',zIndex:'10001',padding:'14px 22px',borderRadius:'8px',background:'#087443',color:'#fff',fontWeight:'700',boxShadow:'0 6px 24px #00102055'});
-      document.body.append(notice);
-      setTimeout(()=>notice.remove(),4500);
-    } catch(error) {
-      button.disabled=false;
-      button.textContent='Submit';
-      status.setAttribute('role','alert');
-      status.textContent=error.name==='AbortError' ? 'Sending timed out. Please verify the FormSubmit activation email for sales@millenniumbolts.com, then try again.' : 'Could not send your request. Please try again or email sales@millenniumbolts.com.';
-    }
+    const data=new FormData(form);
+    const labels={contact_person:'Contact Person',company_name:'Company Name',email:'Email',phone:'Phone',product:'Product',grade_material:'Grade/material',size_length:'Size/length',quantity:'Quantity',requirements:'Requirements'};
+    const body=Object.entries(labels).map(([key,label])=>label+': '+(data.get(key)||'')).join('\n');
+    const params=new URLSearchParams({view:'cm',fs:'1',to:'sales@millenniumbolts.com',cc:'famebros.studio@gmail.com',su:'Quote Request - '+(data.get('product')||'Millennium Bolts'),body});
+    const composeUrl='https://mail.google.com/mail/?'+params.toString();
+    const tab=window.open(composeUrl,'_blank');
+    if(tab){tab.opener=null;}else{window.location.href=composeUrl;}
+    close();
+    const notice=document.createElement('div');
+    notice.setAttribute('role','status');
+    notice.textContent='Email draft opened. Click Send in the new tab.';
+    Object.assign(notice.style,{position:'fixed',left:'50%',bottom:'24px',transform:'translateX(-50%)',zIndex:'10001',padding:'14px 22px',borderRadius:'8px',background:'#087443',color:'#fff',fontWeight:'700',boxShadow:'0 6px 24px #00102055'});
+    document.body.append(notice);
+    setTimeout(()=>notice.remove(),6000);
   });
 })();
 </script>
