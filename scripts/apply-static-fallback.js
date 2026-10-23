@@ -4,7 +4,7 @@ const path = require('node:path');
 const source = path.resolve(__dirname, '..');
 const target = path.resolve(process.argv[2] || source);
 fs.mkdirSync(path.join(target, 'assets'), { recursive: true });
-for (const file of ['mb-static-v1.css', 'mb-static-v1.js', 'mb-static-v2.css', 'mb-static-v2.js', 'mb-brand-export-v1.css', 'mb-brand-v1.css', 'mb-brand-v3.css']) {
+for (const file of ['mb-static-v1.css', 'mb-static-v1.js', 'mb-static-v2.css', 'mb-static-v2.js', 'mb-brand-export-v1.css', 'mb-brand-v1.css', 'mb-brand-v3.css', 'mb-client-reference-v1.css']) {
   if (source !== target) fs.copyFileSync(path.join(source, 'assets', file), path.join(target, 'assets', file));
 }
 const banner = 'assets/wp-content/uploads/2026/10/millennium-bolts-banner-upscaled.png';
@@ -41,7 +41,9 @@ for (const file of fs.readdirSync(target).filter(file => file.endsWith('.html'))
     '<link id="mb-brand-theme" rel="stylesheet" href="/assets/mb-brand-v1.css">\n</head>');
   if (!html.includes('href="/assets/mb-brand-v3.css"')) html = html.replace('</head>',
     '<link rel="stylesheet" href="/assets/mb-brand-v3.css">\n</head>');
-  html = html.replace(/(<img\b[^>]*src="[^"]*\/millennium-bolts-logo\.png"[^>]*alt=")"/g, '$1Millennium Bolts"');
+  if (!html.includes('href="/assets/mb-client-reference-v1.css"')) html = html.replace('</head>',
+    '<link rel="stylesheet" href="/assets/mb-client-reference-v1.css">\n</head>');
+  html = html.replace(/(<img\b[^>]*src="[^"]*\/millennium-bolts-logo-industries\.svg"[^>]*alt=")"/g, '$1Millennium Bolts Industries"');
   fs.writeFileSync(filename, html);
 }
 console.log(`Static fallback installed: ${target}`);
