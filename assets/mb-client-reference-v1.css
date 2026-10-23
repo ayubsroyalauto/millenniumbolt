@@ -8,7 +8,7 @@ body .elementor-517 .elementskit-navbar-nav > li.current-menu-item > a { color: 
 body .elementor-517 .elementor-button { background: var(--mb-ref-cyan) !important; color: #001020 !important; }
 body .elementor-11 .elementor-element-37a41c1f { background-color: #001020 !important; }
 body .elementor-11 .elementor-element-37a41c1f > .elementor-background-overlay,
-body .elementor-126 .elementor-element-082db4a > .elementor-background-overlay { display:none !important; background:none !important; background-image:none !important; opacity:0 !important; }
+body .elementor-126 .elementor-element-082db4a > .elementor-background-overlay { display:block !important; background:#001020 !important; opacity:.7 !important; }
 body .elementor-11 .elementor-element-37a41c1f h1 { color: #fff !important; text-transform: uppercase; }
 body .elementor-11 .elementor-element-37a41c1f .elementor-widget-text-editor { color: #d5e3f2 !important; }
 body .elementor-11 .elementor-element-37a41c1f .elementor-widget-text-editor,
@@ -42,6 +42,15 @@ body .elementor-473 .elementor-element-65092d56 .elementor-icon-list-icon svg { 
 body.page-id-126 .elementor-126 > section:first-child { display:none !important; }
 body .elementor-473 .elementor-element-5bd61b3c .elementor-icon-list-item:nth-child(2) { display:none !important; }
 body .elementor-473 .elementor-element-5bd61b3c .elementor-icon-list-item:first-child .elementor-icon-list-text:after { content:" Millennium Bolts Industries LLP"; color:#fff; }
+@media (max-width:1024px) {
+ body .elementor-517 .mb-menu.mb-menu-open .elementskit-menu-overlay { background:transparent !important; opacity:0 !important; }
+ body .elementor-517 .mb-menu.mb-menu-open .elementskit-menu-container { background:#001020 !important; }
+ body .elementor-517 .mb-menu .elementskit-navbar-nav > li > a { color:#fff !important; }
+ body .elementor-517 .mb-menu .elementskit-navbar-nav > li > a:is(:hover,:focus-visible),
+ body .elementor-517 .mb-menu .elementskit-navbar-nav > li.current-menu-item > a { color:var(--mb-ref-cyan) !important; }
+ body .elementor-517 .mb-menu .elementskit-submenu-panel { background:#001020 !important; }
+ body .elementor-517 .mb-menu .elementskit-submenu-panel > li > a { color:#fff !important; }
+}
 .mb-quote-actions button { min-width:0; white-space:nowrap; }
 .mb-quote-actions button[type="submit"] { padding-inline:20px; }
 /* Scales fluidly from compact phones through wide desktop displays. */

@@ -42,7 +42,7 @@ for (const file of fs.readdirSync(target).filter(file => file.endsWith('.html'))
   if (!html.includes('href="/assets/mb-brand-v3.css"')) html = html.replace('</head>',
     '<link rel="stylesheet" href="/assets/mb-brand-v3.css">\n</head>');
   if (!html.includes('mb-client-reference-v1.css')) html = html.replace('</head>',
-    '<link rel="stylesheet" href="/assets/mb-client-reference-v1.css?v=responsive-v1">\n</head>');
+    '<link rel="stylesheet" href="/assets/mb-client-reference-v1.css?v=restore-menu-overlay">\n</head>');
   html = html.replace(/(<img\b[^>]*src="[^"]*\/millennium-bolts-logo-industries\.svg"[^>]*alt=")"/g, '$1Millennium Bolts Industries"');
   fs.writeFileSync(filename, html);
 }
