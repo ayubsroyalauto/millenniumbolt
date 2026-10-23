@@ -642,7 +642,7 @@ wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
     e.preventDefault();
     const button=form.querySelector('button[type="submit"]');
     button.disabled=true;
-    button.textContent='Sending?';
+    button.textContent='Submit';
     const payload=new FormData(form);
     payload.append('_subject','Quote Request - '+(payload.get('product')||'Millennium Bolts'));
     try {
