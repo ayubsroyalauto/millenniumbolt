@@ -32,13 +32,7 @@
       current = index;
       slides[current].classList.add('is-active');
       layer.dataset.activeSlide = String(current);
-      if (!reducedMotion.matches && settings.background_slideshow_ken_burns === 'yes') {
-        const image = slides[current].firstElementChild;
-        image.getAnimations().forEach(animation => animation.cancel());
-        const frames = [{ transform: 'scale(1)' }, { transform: 'scale(1.2)' }];
-        if (settings.background_slideshow_ken_burns_zoom_direction === 'out') frames.reverse();
-        image.animate(frames, { duration: duration + fade, fill: 'forwards', easing: 'linear' });
-      }
+      // Keep the slideshow's simple fade; omit decorative Ken Burns zoom.
     }
     activate(0);
     if (slides.length < 2 || reducedMotion.matches) return;

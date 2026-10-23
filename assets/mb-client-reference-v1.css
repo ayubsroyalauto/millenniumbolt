@@ -44,10 +44,55 @@ body .elementor-473 .elementor-element-5bd61b3c .elementor-icon-list-item:nth-ch
 body .elementor-473 .elementor-element-5bd61b3c .elementor-icon-list-item:first-child .elementor-icon-list-text:after { content:" Millennium Bolts Industries LLP"; color:#fff; }
 .mb-quote-actions button { min-width:0; white-space:nowrap; }
 .mb-quote-actions button[type="submit"] { padding-inline:20px; }
+/* Scales fluidly from compact phones through wide desktop displays. */
+body { overflow-x:hidden; }
+body .elementor-11 .elementor-element-37a41c1f > .elementor-container { min-height:clamp(480px,68svh,760px) !important; }
+body .elementor-11 .elementor-element-38db56aa .elementor-heading-title { font-size:clamp(2.25rem,5vw,4.5rem) !important; line-height:1.04 !important; }
+body .elementor-11 .elementor-element-3503536 > .elementor-element-populated { padding-left:clamp(28px,5vw,80px) !important; padding-right:24px !important; }
+body .elementor-11 .elementor-element-7918564 .elementor-button { width:min(100%,440px); }
+body .elementor-11 .elementor-element-6474065 { grid-template-columns:repeat(5,minmax(0,1fr)) !important; }
+body .elementor-473 .elementor-element-65092d56 .elementor-icon-list-text { min-width:0; }
+body .mb-quote-card { width:min(760px,100%); max-height:calc(100dvh - 32px); overflow-y:auto; padding:clamp(18px,4vw,32px); }
+body .mb-quote-grid { gap:clamp(10px,2vw,16px); }
+body .mb-quote-grid input, body .mb-quote-grid textarea { min-width:0; }
+@media (min-width:768px) and (max-width:1024px) {
+ body .elementor-11 .elementor-element-37a41c1f > .elementor-container { min-height:560px !important; }
+ body .elementor-11 .elementor-element-3503536 { width:68% !important; }
+ body .elementor-11 .elementor-element-50a8f477 { width:32% !important; }
+ body .elementor-11 .elementor-element-6474065 { grid-template-columns:repeat(3,minmax(0,1fr)) !important; padding-inline:24px !important; }
+ body .elementor-473 .elementor-element-65092d56 { padding:56px 4% 24px !important; }
+ body .elementor-473 .elementor-element-65092d56 .elementor-container { display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px; }
+ body .elementor-473 .elementor-element-65092d56 .elementor-column { width:100% !important; }
+ body .elementor-473 .elementor-element-65092d56 .elementor-column:first-child { grid-column:1/-1; }
+}
 @media (max-width: 767px) {
+ body .elementor-11 .elementor-element-37a41c1f { padding:64px 0 52px !important; }
+ body .elementor-11 .elementor-element-37a41c1f > .elementor-container { min-height:0 !important; }
+ body .elementor-11 .elementor-element-3503536,
+ body .elementor-11 .elementor-element-50a8f477 { width:100% !important; }
+ body .elementor-11 .elementor-element-3503536 > .elementor-element-populated { padding:0 22px !important; }
+ body .elementor-11 .elementor-element-38db56aa .elementor-heading-title { font-size:clamp(2rem,8vw,3rem) !important; line-height:1.08 !important; }
+ body .elementor-11 .elementor-element-405b1e28 { margin-bottom:18px; }
+ body .elementor-11 .elementor-element-7918564 { width:100% !important; }
+ body .elementor-11 .elementor-element-7918564 .elementor-button { width:100%; }
+ body .elementor-11 .elementor-element-50a8f477 { display:none !important; }
+ body .elementor-11 .elementor-element-cf3c573 { padding:24px 16px 8px !important; }
+ body .elementor-11 .elementor-element-cf3c573 h2 { font-size:clamp(1.75rem,7vw,2.25rem) !important; }
+ body .elementor-11 .elementor-element-6474065 { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:12px !important; padding:8px 16px 42px !important; }
+ body .elementor-11 .elementor-element-6474065 img { aspect-ratio:1 / .85; }
  body .elementor-473 .elementor-element-65092d56 { padding: 42px 22px 24px !important; }
  body .elementor-473 .elementor-element-65092d56 .elementor-container { gap: 24px; }
  body .elementor-473 .elementor-element-65092d56 .elementor-column { flex:1 1 100% !important; width:100% !important; }
  body .elementor-473 .elementor-element-65092d56 .elementor-heading-title { font-size: 26px; }
- body .elementor-11 .elementor-element-6474065 { grid-template-columns: repeat(2,minmax(0,1fr)) !important; padding-inline: 16px !important; }
+ body .mb-quote-modal { padding:12px; }
+ body .mb-quote-grid { grid-template-columns:1fr; }
+ body .mb-quote-grid > div { grid-column:1/-1; }
+ body .mb-quote-actions { justify-content:stretch; }
+ body .mb-quote-actions button { flex:1; }
+}
+@media (max-width:380px) {
+ body .elementor-11 .elementor-element-6474065 { grid-template-columns:1fr !important; }
+ body .elementor-11 .elementor-element-6474065 img { aspect-ratio:1 / .75; }
+ body .elementor-473 .elementor-element-65092d56 { padding-inline:16px !important; }
+ body .elementor-473 .elementor-element-65092d56 .elementor-heading-title { font-size:23px; }
 }

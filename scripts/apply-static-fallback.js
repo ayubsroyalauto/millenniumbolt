@@ -35,14 +35,14 @@ for (const file of fs.readdirSync(target).filter(file => file.endsWith('.html'))
   if (/\bchr\(34\)/.test(html)) throw new Error(`Remove invalid legacy slideshow injection in ${file}`);
   if (!html.includes('id="mb-static-fallback"')) html = html.replace('</head>',
     '<link id="mb-static-fallback" rel="stylesheet" href="/assets/mb-static-v1.css">\n' +
-    '<script defer src="/assets/mb-static-v1.js"></script>\n</head>');
+    '<script defer src="/assets/mb-static-v1.js?v=responsive-v1"></script>\n</head>');
   if (!html.includes('id="mb-brand-theme"')) html = html.replace('</head>',
     '<link rel="stylesheet" href="/assets/mb-brand-export-v1.css">\n' +
     '<link id="mb-brand-theme" rel="stylesheet" href="/assets/mb-brand-v1.css">\n</head>');
   if (!html.includes('href="/assets/mb-brand-v3.css"')) html = html.replace('</head>',
     '<link rel="stylesheet" href="/assets/mb-brand-v3.css">\n</head>');
-  if (!html.includes('href="/assets/mb-client-reference-v1.css"')) html = html.replace('</head>',
-    '<link rel="stylesheet" href="/assets/mb-client-reference-v1.css">\n</head>');
+  if (!html.includes('mb-client-reference-v1.css')) html = html.replace('</head>',
+    '<link rel="stylesheet" href="/assets/mb-client-reference-v1.css?v=responsive-v1">\n</head>');
   html = html.replace(/(<img\b[^>]*src="[^"]*\/millennium-bolts-logo-industries\.svg"[^>]*alt=")"/g, '$1Millennium Bolts Industries"');
   fs.writeFileSync(filename, html);
 }
