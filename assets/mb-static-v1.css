@@ -1,5 +1,14 @@
 /* Exported animation widgets must remain readable without Elementor's runtime. */
 .elementor .elementor-invisible { visibility: visible !important; }
+.elementor [data-settings*="_animation"],
+.elementor .animated,
+.elementor .elementor-invisible {
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
 .mb-static-slideshow { isolation: isolate; }
 .mb-static-slideshow > .mb-slides {
   position: absolute;

@@ -60,41 +60,8 @@
   });
 })();
 
-/* Play authored entrance effects only when in view. Never persist hidden state. */
-(() => {
-  if (window.__mbEntranceAnimationsInitialized) return;
-  window.__mbEntranceAnimationsInitialized = true;
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  if (!('IntersectionObserver' in window) || !Element.prototype.animate) return;
-  const running = new Set();
-  const started = new WeakSet();
-  const frames = {
-    fadeIn: [{ opacity: 0 }, { opacity: 1 }],
-    fadeInUp: [{ opacity: 0, transform: 'translate3d(0,100%,0)' }, { opacity: 1, transform: 'none' }],
-    fadeInLeft: [{ opacity: 0, transform: 'translate3d(-100%,0,0)' }, { opacity: 1, transform: 'none' }],
-    fadeInRight: [{ opacity: 0, transform: 'translate3d(100%,0,0)' }, { opacity: 1, transform: 'none' }]
-  };
-  const observer = new IntersectionObserver(entries => entries.forEach(({ target, isIntersecting }) => {
-    if (!isIntersecting || started.has(target)) return;
-    started.add(target);
-    observer.unobserve(target);
-    if (reduced.matches) return;
-    const settings = JSON.parse(target.dataset.settings);
-    const suffix = innerWidth <= 767 ? '_mobile' : innerWidth <= 1024 ? '_tablet' : '';
-    const name = settings[`_animation${suffix}`] || settings._animation || settings.animation;
-    if (!frames[name]) return;
-    const duration = target.classList.contains('animated-slow') ? 2000 : target.classList.contains('animated-fast') ? 750 : 1250;
-    const animation = target.animate(frames[name], { duration, delay: Number(settings._animation_delay || settings.animation_delay) || 0, easing: 'ease', fill: 'forwards' });
-    target.dataset.mbAnimation = name;
-    target.dataset.mbAnimationStartCount = String((Number(target.dataset.mbAnimationStartCount) || 0) + 1);
-    running.add(animation);
-    animation.finished.then(() => { running.delete(animation); target.dataset.mbAnimationFinished = 'true'; }).catch(() => running.delete(animation));
-  }), { threshold: 0.15 });
-  document.querySelectorAll('[data-settings]').forEach(el => {
-    try { const s = JSON.parse(el.dataset.settings); if (s._animation || s.animation) observer.observe(el); } catch { /* Invalid exported settings remain visible. */ }
-  });
-  reduced.addEventListener('change', () => { if (reduced.matches) running.forEach(animation => animation.cancel()); });
-})();
+/* Entrance effects are intentionally disabled in the static export. Elementor's
+   scroll-triggered effects can replay or jump while scrolling; keep content stable. */
 
 // The export keeps Swiper but omits Elementor's image-carousel initializer.
 document.addEventListener('DOMContentLoaded', () => {
