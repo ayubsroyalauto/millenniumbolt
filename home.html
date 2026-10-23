@@ -843,8 +843,7 @@ wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
     const data=new FormData(form);
     const body=Object.fromEntries(data.entries());
     const subject=encodeURIComponent('Quote Request - '+(body.product||'Millennium Bolts'));
-    const msg=encodeURIComponent(Object.entries(body).map(([k,v])=>k.replace(/_/g,' ')+': '+v).join('
-'));
+    const msg=encodeURIComponent(Object.entries(body).map(([k,v])=>k.replace(/_/g,' ')+': '+v).join('\n'));
     window.location.href='mailto:sales@millenniumbolts.com?subject='+subject+'&body='+msg;
     close();
   });
